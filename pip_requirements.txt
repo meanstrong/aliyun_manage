@@ -1,0 +1,2 @@
+flask==0.10.1
+aliyun-python-sdk-ecs==2.1.0
