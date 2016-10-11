@@ -3,9 +3,13 @@ __author__ = 'Rocky Peng'
 
 # -- app config --
 DEBUG = True
-PORT = 9998
+PORT = 9990
+UPLOAD_FOLDER = "/data/home/rocky/aliyun_manage/upload"
 
 # -- aliyun config --
-AccessKey = '******************'
-AccessSecret = '***************'
+AccessKey = '***************'
+AccessSecret = '**************'
 RegionId = 'cn-shenzhen'
+DefaultPassword = "ABC123###"
+DefaultInstanceType = "ecs.t1.small"
+DefaultImageId = "ubuntu1404_64_40G_cloudinit_20160727.raw"

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/aliyun/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/aliyun/index.js') }}"></script>
+</head>
+<title>Aliyun Manage</title>
+
+<body>
+<div class="container header">
+    <div class="row">
+    <div class="pull-left">
+        <h3>Aliyun Manage</h3>
+    </div>
+    </div>
+</div>
+<hr>
+<div class="container">
+    <div class="center-block">
+        <button type="submit" id="CreateInstance" class="btn btn-primary">购买实例</button>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>实例</th>
+                <th>IP地址</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<body>
+</html>
