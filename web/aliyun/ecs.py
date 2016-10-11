@@ -9,7 +9,8 @@ from aliyunsdkecs.request.v20140526 import DescribeRegionsRequest, \
     DescribeZonesRequest, CreateInstanceRequest, DescribeImagesRequest, \
     DescribeInstanceTypesRequest, DescribeInstancesRequest, \
     DeleteInstanceRequest, StartInstanceRequest, StopInstanceRequest, \
-    AllocatePublicIpAddressRequest, DescribeInstanceVncUrlRequest
+    AllocatePublicIpAddressRequest, DescribeInstanceVncUrlRequest, \
+    DescribeInstanceStatusRequest
 
 from web import config
 
@@ -107,13 +108,15 @@ class ECS(object):
         for instance in instances["Instances"]["Instance"]:
             self.DeleteInstance(instance["InstanceId"])
 
-    def StopInstance(self, InstanceId):
+    def StopInstance(self, InstanceId, ForceStop=True):
         '''停止实例
         '''
         clt = client.AcsClient(self.access_key, self.access_secret, self.region_id)
         request = StopInstanceRequest.StopInstanceRequest()
         request.set_accept_format("json")
         request.set_InstanceId(InstanceId)
+        if ForceStop:
+            request.set_ForceStop("true")
         result = clt.do_action(request)
         return json.loads(result)
 
@@ -124,6 +127,15 @@ class ECS(object):
         request = StartInstanceRequest.StartInstanceRequest()
         request.set_accept_format("json")
         request.set_InstanceId(InstanceId)
+        result = clt.do_action(request)
+        return json.loads(result)
+
+    def DescribeInstanceStatus(self):
+        '''查询实例状态
+        '''
+        clt = client.AcsClient(self.access_key, self.access_secret, self.region_id)
+        request = DescribeInstanceStatusRequest.DescribeInstanceStatusRequest()
+        request.set_accept_format("json")
         result = clt.do_action(request)
         return json.loads(result)
 
